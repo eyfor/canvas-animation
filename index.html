@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>测试</title>
+</head>
+<body>
+    <div class="bg">
+        <canvas id="background" width="1000" height="500"></canvas>
+    </div>
+
+    <style>
+        .bg {
+            background:linear-gradient(#144BFF,#14B9FF);
+            width:1000px;
+            height:500px;
+        }
+    </style>
+
+    <script src="./animation/hubble/index.js"></script>
+    <script src="./animation/iconHubble/index.js"></script>
+    <script src="./animation/wave/index.js"></script>
+    <script src="./animation/background.js"></script>
+    <script>
+        let showHubble = true
+        let showIconHubble = true
+        let showWave = true
+        
+        let canvasBox = document.getElementById('background')
+        let bgAni = background(canvasBox)
+
+        if(showHubble) bgAni.hubble(3)
+        if(showIconHubble) bgAni.iconHubble()
+        if(showWave) {
+            let wave = bgAni.wave()
+            wave.clickCb((index) => {
+                console.log(index + 10)
+            })
+        }
+
+        bgAni.start()
+    </script>
+</body>
+</html>
